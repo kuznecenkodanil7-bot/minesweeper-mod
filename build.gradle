@@ -1,0 +1,28 @@
+cat > build.gradle << 'EOF'
+plugins {
+    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = '1.0.0'
+group = 'com.grok.minesweeper'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.1"
+    mappings "net.fabricmc:yarn:1.21.1+build.3"
+    modImplementation "net.fabricmc:fabric-loader:0.16.9"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.107.0+1.21.1"
+}
+
+processResources {
+    inputs.property "version", project.version
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21
+}
+EOF
