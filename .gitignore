@@ -1,0 +1,6 @@
+cat > .gitignore << 'EOF'
+.gradle
+build
+*.jar
+run
+EOF
